@@ -35,11 +35,7 @@
             "apiVersion": "2022-03-01",
             "name": "[parameters('vmName')]",
             "location": "[resourceGroup().location]",
-            "dependsOn":[
-                "[resourceId('Microsoft.Network/networkInterfaces', concat(parameters('vmName'), '-nic'))]",
-                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
-                "[resourceId('Microsoft.Network/publicIpAddresses', parameters('publicIpAddressName'))]"
-            ],
+            "dependsOn":[],
             "properties": {
                 "hardwareProfile": {
                     "vmSize": "[parameters('vmSize')]"
