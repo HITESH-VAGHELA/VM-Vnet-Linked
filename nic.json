@@ -16,7 +16,9 @@
         }
     },
     "functions": [],
-    "variables": {},
+    "variables": {
+        "id1": "[resourceId('Microsoft.Network/networkInterfaces', concat(parameters('vmName'), '-nic'))]"
+    },
     "resources": [
         {
             "type": "Microsoft.Network/networkInterfaces",
@@ -45,7 +47,7 @@
     "outputs": {
         "nicId": {
             "type": "string",
-            "value": "[resourceId('Microsoft.Network/networkInterfaces', concat(parameters('vmName'), '-nic'))]"
+            "value": "[reference(variables('id1'))]"
         }
     }
 }
