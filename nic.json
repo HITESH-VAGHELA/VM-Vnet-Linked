@@ -5,20 +5,10 @@
         "vmName": {
             "type": "string",
             "defaultValue":"testVm"
-        },
-        "virtualNetworkName": {
-            "type": "string",
-            "defaultValue":"testvnet"
-        },
-        "subnetName": {
-            "type": "string",
-            "defaultValue":"default"
         }
     },
     "functions": [],
-    "variables": {
-        "id1": "[resourceId('Microsoft.Network/networkInterfaces', concat(parameters('vmName'), '-nic'))]"
-    },
+    "variables": {},
     "resources": [
         {
             "type": "Microsoft.Network/networkInterfaces",
@@ -47,7 +37,7 @@
     "outputs": {
         "nicId": {
             "type": "string",
-            "value": "[reference(variables('id1'))]"
+            "value": "[resourceId('Microsoft.Network/networkInterfaces', concat(parameters('vmName'), '-nic'))]"
         }
     }
 }

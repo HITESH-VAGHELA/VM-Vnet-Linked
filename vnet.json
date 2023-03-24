@@ -16,9 +16,7 @@
         }
     },
     "functions": [],
-    "variables": {
-        "id":"[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName')), '/subnets/', parameters('subnetName'))]"
-    },
+    "variables": {},
     "resources": [
         {
             "type": "Microsoft.Network/virtualNetworks",
@@ -45,7 +43,7 @@
     "outputs": {
         "subnetRef": {
             "type": "string",
-            "value": "[reference(variables('id'))]"
+            "value": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName')), '/subnets/', parameters('subnetName'))]"
         }
     }
 }

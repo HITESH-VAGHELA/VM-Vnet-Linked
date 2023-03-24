@@ -17,7 +17,6 @@
     },
     "functions": [],
     "variables": {
-        "id2":"[resourceId(resourceGroup().name, 'Microsoft.Network/publicIpAddresses', parameters('publicIpAddressName'))]"
     },
     "resources": [
         {
