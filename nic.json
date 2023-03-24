@@ -45,7 +45,7 @@
     "outputs": {
         "nicId": {
             "type": "string",
-            "value": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName')), '/subnets/', parameters('subnetName'))]"
+            "value": "[resourceId('Microsoft.Network/networkInterfaces', concat(parameters('vmName'), '-nic'))]"
         }
     }
 }
