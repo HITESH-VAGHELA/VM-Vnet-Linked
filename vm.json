@@ -1,0 +1,77 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "vmName": {
+            "type": "string",
+            "defaultValue":"testVm"
+        },
+        "virtualNetworkName": {
+            "type": "string",
+            "defaultValue":"testvnet"
+        },
+        "publicIpAddressName": {
+            "type": "string",
+            "defaultValue":"test-vm-ip"
+        },
+        "vmSize": {
+            "type": "string",
+            "defaultValue":"Standard_B1ls"
+        },
+        "adminUsername": {
+            "type": "string",
+            "defaultValue":"testadmin"
+        },
+        "adminPassword": {
+            "type": "string",
+            "defaultValue":"testadmin@123"
+        }
+    },
+    "functions": [],
+    "variables": {},
+    "resources": [
+        {
+            "type":"Microsoft.Compute/virtualMachines",
+            "apiVersion": "2022-03-01",
+            "name": "[parameters('vmName')]",
+            "location": "[resourceGroup().location]",
+            "dependsOn":[
+                "[resourceId('Microsoft.Network/networkInterfaces', concat(parameters('vmName'), '-nic'))]",
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
+                "[resourceId('Microsoft.Network/publicIpAddresses', parameters('publicIpAddressName'))]"
+            ],
+            "properties": {
+                "hardwareProfile": {
+                    "vmSize": "[parameters('vmSize')]"
+                },
+                "storageProfile": {
+                    "osDisk": {
+                        "createOption": "FromImage",
+                        "managedDisk":{
+                            "storageAccountType": "Standard_LRS"
+                        }
+                    },
+                    "imageReference": {
+                        "publisher": "canonical",
+                        "offer": "0001-com-ubuntu-server-focal",
+                        "sku": "20_04-lts-gen2",
+                        "version": "latest"
+                    }
+                },
+                "osProfile": {
+                    "computerName": "[parameters('vmName')]",
+                    "adminUsername": "[parameters('adminUsername')]",
+                    "adminPassword": "[parameters('adminPassword')]"
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "id": "[reference('networkInterafaceTemplate').outputs.nicId.value]"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "outputs": {}
+}
