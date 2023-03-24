@@ -6,14 +6,6 @@
             "type": "string",
             "defaultValue":"testVm"
         },
-        "virtualNetworkName": {
-            "type": "string",
-            "defaultValue":"testvnet"
-        },
-        "publicIpAddressName": {
-            "type": "string",
-            "defaultValue":"test-vm-ip"
-        },
         "vmSize": {
             "type": "string",
             "defaultValue":"Standard_B1ls"
