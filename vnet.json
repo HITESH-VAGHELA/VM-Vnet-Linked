@@ -43,7 +43,7 @@
     "outputs": {
         "subnetRef": {
             "type": "string",
-            "value": "[reference(concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName')), '/subnets/', parameters('subnetName')))]"
+            "value": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName')), '/subnets/', parameters('subnetName'))]"
         }
     }
 }
