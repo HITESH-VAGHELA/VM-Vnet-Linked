@@ -22,11 +22,11 @@
                         "name": "ipconfig",
                         "properties":{
                             "subnet": {
-                                "id": "[reference('vnetTemplate').outputs.subnetRef.value]"
+                                "id": "[reference(resourceId('Microsoft.Resources/deployments', 'vnetTemplate')).outputs.subnetRef.value]"
                             },
                             "privateIPAllocationMethod": "Dynamic",
                             "publicIPAddress": {
-                                "id": "[reference('publicIp').outputs.publicIpAddress.value]"
+                                "id": "[reference(resourceId('Microsoft.Resources/deployments', 'publicIp')).outputs.publicIpAddress.value]"
                             }
                         }
                     }
