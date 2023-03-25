@@ -5,10 +5,6 @@
         "vmName": {
             "type": "string",
             "defaultValue":"testVm"
-        },
-        "publicIpName": {
-            "type": "string",
-            "defaultValue": "test-vm-ip"
         }
     },
     "functions": [],
@@ -26,11 +22,11 @@
                         "name": "ipconfig",
                         "properties":{
                             "subnet": {
-                                "id": "[reference(resourceId(resourceGroup().name, 'Microsoft.Compute/virtualMachines', parameters('vmName'))).outputs.subnetRef.value]"
+                                "id": "[reference(resourceId(resourceGroup().name, 'Microsoft.Resources/deployments', 'VmTemplate')).outputs.subnetRef.value]"
                             },
                             "privateIPAllocationMethod": "Dynamic",
                             "publicIPAddress": {
-                                "id": "[reference(resourceId(resourceGroup().name, 'Microsoft.Network/publicIpAddresses', parameters('publicIpName'))).outputs.publicIpAddress.value]"
+                                "id": "[reference(resourceId(resourceGroup().name, 'Microsoft.Resources/deployments', 'publicIp')).outputs.publicIpAddress.value]"
                             }
                         }
                     }
