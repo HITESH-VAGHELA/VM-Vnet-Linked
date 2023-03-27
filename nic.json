@@ -27,10 +27,7 @@
             "apiVersion": "2020-11-01",
             "name": "[concat(parameters('vmName'), '-nic')]",
             "location":"[resourceGroup().location]",
-            "dependsOn": [
-                "[resourceId(resourceGroup().name, 'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
-                "[resourceId(resourceGroup().name, 'Microsoft.Network/publicIpAddresses', parameters('publicIpAddressName'))]"
-            ],
+            "dependsOn": [],
             "properties": {
                 "ipConfigurations": [
                     {
