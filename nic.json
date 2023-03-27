@@ -38,8 +38,8 @@
                         "properties":{
                             "subnet": {
                                 //"id": "[resourceId(resourceGroup().name, 'Microsoft.Resources/deployments', 'VmTemplate').outputs.subnetRef.value]"
-                                //"id":"[reference(resourceId(resourceGroup().name, 'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName')), '/subnets/', parameters('subnetName')).outputs.subnetRef.value]"
-                                "id":"[reference(resourceId(resourceGroup().name,'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))).outputs.subnetRef.value]"
+                                "id":"[reference(resourceId(resourceGroup().name, 'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName')), '/subnets/', parameters('subnetName')).outputs.subnetRef.value]"
+                                //"id":"[reference(resourceId(resourceGroup().name,'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))).outputs.subnetRef.value]"
                             },
                             "privateIPAllocationMethod": "Dynamic",
                             "publicIPAddress": {
