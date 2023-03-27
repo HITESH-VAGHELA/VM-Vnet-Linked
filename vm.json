@@ -54,7 +54,8 @@
                 "networkProfile": {
                     "networkInterfaces": [
                         {
-                            "id": "[resourceId(resourceGroup().name, 'Microsoft.Resources/deployments','networkInterafaceTemplate').outputs.nicId.value]"
+                            //"id": "[resourceId(resourceGroup().name, 'Microsoft.Resources/deployments','networkInterafaceTemplate').outputs.nicId.value]"
+                            "id":"[reference(resourceId('Microsoft.Network/networkInterfaces', concat(parameters('vmName'), '-nic'))).outputs.nicId.value]"
                         }
                     ]
                 }

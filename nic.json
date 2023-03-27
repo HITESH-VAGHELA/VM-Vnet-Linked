@@ -5,6 +5,18 @@
         "vmName": {
             "type": "string",
             "defaultValue":"testVm"
+        },
+        "virtualNetworkName": {
+            "type": "string",
+            "defaultValue": "testvnet"
+        },
+        "subnetName": {
+            "type": "string",
+            "defaultValue": "default"
+        },
+        "publicIpAddressName": {
+            "type": "string",
+            "defaultValue": "test-vm-ip"
         }
     },
     "functions": [],
@@ -22,11 +34,13 @@
                         "name": "ipconfig",
                         "properties":{
                             "subnet": {
-                                "id": "[resourceId(resourceGroup().name, 'Microsoft.Resources/deployments', 'VmTemplate').outputs.subnetRef.value]"
+                                //"id": "[resourceId(resourceGroup().name, 'Microsoft.Resources/deployments', 'VmTemplate').outputs.subnetRef.value]"
+                                "id":"[reference(resourceId(resourceGroup().name, 'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName')), '/subnets/', parameters('subnetName')).outputs.subnetRef.value]"
                             },
                             "privateIPAllocationMethod": "Dynamic",
                             "publicIPAddress": {
-                                "id": "[resourceId(resourceGroup().name, 'Microsoft.Resources/deployments', 'publicIp').outputs.publicIpAddress.value]"
+                                //"id": "[resourceId(resourceGroup().name, 'Microsoft.Resources/deployments', 'publicIp').outputs.publicIpAddress.value]"
+                                "id":"[reference(resourceGroup().name, resourceId('Microsoft.Network/publicIpAddresses', parameters('publicIpAddressName'))).outputs.publicIpAddress.value]"
                             }
                         }
                     }
