@@ -17,6 +17,10 @@
         "publicIpAddressName": {
             "type": "string",
             "defaultValue": "test-vm-ip"
+        },
+        "subnetid": {
+            "type": "string",
+            "defaultValue": "[resourceId('Microsoft.Resources/deployments','vnetTemplate')]"
         }
     },
     "functions": [],
@@ -40,7 +44,7 @@
                                 //"id": "[resourceId(resourceGroup().name, 'Microsoft.Resources/deployments', 'VmTemplate').outputs.subnetRef.value]"
                                 //"id":"[reference(resourceId(resourceGroup().name, 'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName')), '/subnets/', parameters('subnetName')).outputs.subnetRef.value]"
                                 //"id":"[reference(resourceId(resourceGroup().name,'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))).outputs.subnetRef.value]"
-                                "id":"[reference(resourceId('Microsoft.Resources/deployments','vnetTemplate')).outputs.subnetRef.value]"
+                                "id":"[reference(parameters('subnetid')).outputs.subnetRef.value]"
                             },
                             "privateIPAllocationMethod": "Dynamic",
                             "publicIPAddress": {
