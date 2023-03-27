@@ -20,7 +20,7 @@
         },
         "subnetid": {
             "type": "string",
-            "defaultValue": "[resourceId('Microsoft.Resources/deployments','vnetTemplate')]"
+            "defaultValue": "[resourceId(resourceGroup().name, 'Microsoft.Resources/deployments','vnetTemplate')]"
         }
     },
     "functions": [],
