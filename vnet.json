@@ -45,7 +45,7 @@
     ],
     "outputs": {
         "subnetRef": {
-            "type": "object",
+            "type": "string",
             "value": "[reference(variables('subnetRef'), '2020-11-01')]"
         }
     }
