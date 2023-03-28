@@ -45,7 +45,7 @@
     "outputs": {
         "subnetRef": {
             "type": "string",
-            "value": "[variables('subnetRef')]"
+            "value": "[reference(variables('subnetRef'))]"
         }
     }
 }
