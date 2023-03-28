@@ -45,7 +45,7 @@
                                 //"id": "[resourceId(resourceGroup().name, 'Microsoft.Resources/deployments', 'VmTemplate').outputs.subnetRef.value]"
                                 //"id":"[reference(resourceId(resourceGroup().name, 'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName')), '/subnets/', parameters('subnetName')).outputs.subnetRef.value]"
                                // "id":"[reference(resourceId(resourceGroup().name,'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))).outputs.subnetRef.value]"
-                                "id": "[reference(resourceId(resourceGroup().name, 'Microsoft.Resources/deployments', 'vnetTemplate'), '2021-04-01', 'Full' ).outputs.subnetRef.value]"
+                                "id": "[reference(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName')), '2021-04-01', 'Full' ).outputs.subnetRef.value]"
                                 
                             },
                             "privateIPAllocationMethod": "Dynamic",
