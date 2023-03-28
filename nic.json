@@ -33,8 +33,8 @@
             "name": "[concat(parameters('vmName'), '-nic')]",
             "location":"[resourceGroup().location]",
             "dependsOn": [
-                "[resourceId(resourceGroup().name, 'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
-                "[resourceId(resourceGroup().name, 'Microsoft.Network/publicIpAddresses', parameters('publicIpAddressName'))]"
+                //"[resourceId(resourceGroup().name, 'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
+                //"[resourceId(resourceGroup().name, 'Microsoft.Network/publicIpAddresses', parameters('publicIpAddressName'))]"
             ],
             "properties": {
                 "ipConfigurations": [
@@ -45,13 +45,13 @@
                                 //"id": "[resourceId(resourceGroup().name, 'Microsoft.Resources/deployments', 'VmTemplate').outputs.subnetRef.value]"
                                 //"id":"[reference(resourceId(resourceGroup().name, 'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName')), '/subnets/', parameters('subnetName')).outputs.subnetRef.value]"
                                // "id":"[reference(resourceId(resourceGroup().name,'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))).outputs.subnetRef.value]"
-                                "id": "[reference(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName')), '2020-11-01').outputs.subnetRef.value]"
+                                "id": "[reference(resourceId(resourceGroup().name, 'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName')), '2020-11-01').outputs.subnetRef.value]"
                                 
                             },
                             "privateIPAllocationMethod": "Dynamic",
                             "publicIPAddress": {
                                 //"id": "[resourceId(resourceGroup().name, 'Microsoft.Resources/deployments', 'publicIp').outputs.publicIpAddress.value]"
-                                "id":"[reference(resourceId('Microsoft.Network/publicIpAddresses', parameters('publicIpAddressName')), '2020-08-01').outputs.publicIpAddress.value]"
+                                "id":"[reference(resourceId(resourceGroup().name, 'Microsoft.Network/publicIpAddresses', parameters('publicIpAddressName')), '2020-08-01').outputs.publicIpAddress.value]"
                             }
                         }
                     }
