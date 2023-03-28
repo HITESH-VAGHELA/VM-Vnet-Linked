@@ -34,7 +34,7 @@
             "location":"[resourceGroup().location]",
             "dependsOn": [
                 //"[resourceId(resourceGroup().name, 'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
-                "[resourceId(resourceGroup().name, 'Microsoft.Network/publicIpAddresses', parameters('publicIpAddressName'))]"
+               // "[resourceId(resourceGroup().name, 'Microsoft.Network/publicIpAddresses', parameters('publicIpAddressName'))]"
             ],
             "properties": {
                 "ipConfigurations": [
