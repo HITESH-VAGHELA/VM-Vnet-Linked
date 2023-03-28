@@ -38,7 +38,7 @@
     "outputs": {
         "publicIpAddress": {
             "type": "string",
-            "value": "[reference(resourceId(resourceGroup().name,'Microsoft.Network/publicIpAddresses', parameters('publicIpAddressName')))]"
+            "value": "[resourceId(resourceGroup().name, 'Microsoft.Network/publicIpAddresses', parameters('publicIpAddressName'))]"
         }
     }
 }
