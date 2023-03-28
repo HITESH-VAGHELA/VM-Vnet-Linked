@@ -51,7 +51,7 @@
                             "privateIPAllocationMethod": "Dynamic",
                             "publicIPAddress": {
                                 //"id": "[resourceId(resourceGroup().name, 'Microsoft.Resources/deployments', 'publicIp').outputs.publicIpAddress.value]"
-                                "id":"[reference(resourceId(resourceGroup().name,'Microsoft.Network/publicIpAddresses', parameters('publicIpAddressName'))).outputs.publicIpAddress.value]"
+                                "id":"[reference(resourceId(resourceGroup().name,'Microsoft.Network/publicIpAddresses', parameters('publicIpAddressName')), '2020-08-01').outputs.publicIpAddress.value]"
                             }
                         }
                     }
