@@ -5,29 +5,10 @@
         "vmName": {
             "type": "string",
             "defaultValue":"testVm"
-        },
-        "virtualNetworkName": {
-            "type": "string",
-            "defaultValue": "testvnet"
-        },
-        "subnetName": {
-            "type": "string",
-            "defaultValue": "default"
-        },
-        "publicIpAddressName": {
-            "type": "string",
-            "defaultValue": "test-vm-ip"
         }
-        //"subnetid": {
-        //    "type": "string",
-        //    "defaultValue": "[resourceId(resourceGroup().name,'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]"
-        //}
     },
     "functions": [],
     "variables": {
-       // "subnetid": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName')), '/subnets/', parameters('subnetName'))]"
-       // "subnetid": "[reference(concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName')), '/subnets/', parameters('subnetName')), '2020-11-01')]"
-
     },
     "resources": [
         {
@@ -36,8 +17,6 @@
             "name": "[concat(parameters('vmName'), '-nic')]",
             "location":"[resourceGroup().location]",
             "dependsOn": [
-                //"[resourceId(resourceGroup().name, 'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
-                //"[resourceId(resourceGroup().name, 'Microsoft.Network/publicIpAddresses', parameters('publicIpAddressName'))]"
             ],
             "properties": {
                 "ipConfigurations": [
@@ -68,7 +47,7 @@
     "outputs": {
         "nicId": {
             "type": "string",
-            "value": "[resourceId('Microsoft.Network/networkInterfaces', concat(parameters('vmName'), '-nic'))]"
+            "value": "[resourceId(resourceGroup().name, 'Microsoft.Network/networkInterfaces', concat(parameters('vmName'), '-nic'))]"
         }
     }
 }
