@@ -16,8 +16,7 @@
         }
     },
     "functions": [],
-    "variables": {
-    },
+    "variables": {},
     "resources": [
         {
             "name": "[parameters('publicIpAddressName')]",

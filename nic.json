@@ -8,34 +8,24 @@
         }
     },
     "functions": [],
-    "variables": {
-    },
+    "variables": {},
     "resources": [
         {
             "type": "Microsoft.Network/networkInterfaces",
             "apiVersion": "2020-11-01",
             "name": "[concat(parameters('vmName'), '-nic')]",
             "location":"[resourceGroup().location]",
-            "dependsOn": [
-            ],
+            "dependsOn": [],
             "properties": {
                 "ipConfigurations": [
                     {
                         "name": "ipconfig",
                         "properties":{
                             "subnet": {
-                                //"id": "[resourceId(resourceGroup().name, 'Microsoft.Resources/deployments', 'VmTemplate').outputs.subnetRef.value]"
-                                //"id":"[reference(resourceId(resourceGroup().name, 'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName')), '/subnets/', parameters('subnetName')).outputs.subnetRef.value]"
-                               // "id":"[reference(resourceId(resourceGroup().name,'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))).outputs.subnetRef.value]"
-                               // "id": "[reference(resourceId(resourceGroup().name, 'Microsoft.Network/virtualNetworks',parameters('virtualNetworkName')), '2020-11-01').outputs.subnetRef.value]"
                                "id":"[reference(resourceId(resourceGroup().name, 'Microsoft.Resources/deployments', 'vnetTemplate'), '2021-04-01').outputs.subnetRef.value]" 
-                              // "id": "/subscriptions/8dcf5406-1ef3-45a7-a85d-67d3dde5d189/resourceGroups/devops/providers/Microsoft.Network/virtualNetworks/testvnet/subnets/default" 
                             },
                             "privateIPAllocationMethod": "Dynamic",
                             "publicIPAddress": {
-                                //"id": "[resourceId(resourceGroup().name, 'Microsoft.Resources/deployments', 'publicIp').outputs.publicIpAddress.value]"
-                                //"id":"[reference(resourceId(resourceGroup().name, 'Microsoft.Network/publicIpAddresses', parameters('publicIpAddressName')), '2020-08-01').outputs.publicIpAddress.value]"
-                                //"id": "/subscriptions/8dcf5406-1ef3-45a7-a85d-67d3dde5d189/resourceGroups/devops/providers/Microsoft.Network/publicIpAddresses/test-vm-ip"
                                 "id": "[reference(resourceId(resourceGroup().name, 'Microsoft.Resources/deployments', 'publicIpTemplate'), '2022-09-01').outputs.publicIpAddress.value]"
                             }
                         }

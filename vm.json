@@ -54,7 +54,6 @@
                 "networkProfile": {
                     "networkInterfaces": [
                         {
-                           // "id":"[reference(resourceId(resourceGroup().name, 'Microsoft.Network/networkInterfaces', concat(parameters('vmName'), '-nic'))).outputs.nicId.value]"
                             "id": "[reference(resourceId(resourceGroup().name, 'Microsoft.Resources/deployments', 'networkInterafaceTemplate'), '2022-09-01').outputs.nicId.value]"
                         }
                     ]
