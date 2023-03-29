@@ -17,8 +17,8 @@
     },
     "functions": [],
     "variables": {
-        //"subnetRef": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName')), '/subnets/', parameters('subnetName'))]"
-        "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworkName'), parameters('subnetName'))]"
+        "subnetRef": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName')), '/subnets/', parameters('subnetName'))]"
+        //"subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworkName'), parameters('subnetName'))]"
     },
     "resources": [
         {
@@ -46,7 +46,7 @@
     "outputs": {
         "subnetRef": {
             "type": "string",
-            "value": "[reference(variables('subnetRef'), '2020-11-01')]"
+            "value": "[variables('subnetRef')]"
         }
     }
 }
